@@ -1,10 +1,17 @@
+import java.awt.*;
+
 public class ZooCell{
     private int x,y;
     private int sideSize;
     private boolean isTaken;
 
     public ZooCell(){
-        sideSize = 50;
+        sideSize = 40;
+    }
+
+    public void draw(Graphics g){
+        g.setColor(Color.BLACK);
+        g.drawRect(x,y,sideSize,sideSize);
     }
 
     public int getX() {

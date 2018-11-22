@@ -16,11 +16,11 @@ public abstract class Animal {
         age = 0;
     }
 
-    private boolean checkHungry(){
+    public boolean checkHungry(){
         return health < 50;
     }
 
-    protected void reactToFood(){
+    public void reactToFood(){
     }
 
     public void eat(){
