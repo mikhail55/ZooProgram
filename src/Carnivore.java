@@ -2,7 +2,7 @@ import java.awt.*;
 
 public class Carnivore extends Animal {
 
-    private enum type{
+     enum type{
         LION, PANTHER, WOLF
     }
 

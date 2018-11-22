@@ -8,6 +8,8 @@ public abstract class Animal {
     private int health;
     private int age;
     private Color color;
+    private int x,y;
+    private int size;
 
     public Animal() {
         health = 100;
@@ -15,11 +17,7 @@ public abstract class Animal {
     }
 
     private boolean checkHungry(){
-        if (health < 50){
-            return true;
-        } else {
-            return false;
-        }
+        return health < 50;
     }
 
     protected void reactToFood(){
@@ -27,6 +25,11 @@ public abstract class Animal {
 
     public void eat(){
         health = 100;
+    }
+
+    public void draw(Graphics g){
+        g.setColor(color);
+        g.fillOval(x,y,size,size);
     }
 
     public String getName() {
