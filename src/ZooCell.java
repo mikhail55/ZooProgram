@@ -2,16 +2,15 @@ import java.awt.*;
 
 public class ZooCell{
     private int x,y;
-    private int sideSize;
     private boolean isTaken;
+    public static final int sideSize = 50;
 
-    public ZooCell(){
-        sideSize = 40;
+    protected ZooCell(){
     }
 
     public void draw(Graphics g){
         g.setColor(Color.BLACK);
-        g.drawRect(x,y,sideSize,sideSize);
+        g.drawRect(y * sideSize,x * sideSize,sideSize,sideSize);
     }
 
     public int getX() {
@@ -28,10 +27,6 @@ public class ZooCell{
 
     public void setY(int y) {
         this.y = y;
-    }
-
-    public int getSideSize() {
-        return sideSize;
     }
 
     public boolean isTaken() {

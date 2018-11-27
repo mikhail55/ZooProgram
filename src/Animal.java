@@ -10,6 +10,9 @@ public abstract class Animal {
     private Color color;
     private int x,y;
     private int size;
+    private int price;
+    private int income;
+    private int space;
 
     public Animal() {
         health = 100;
@@ -62,5 +65,33 @@ public abstract class Animal {
 
     public void setColor(Color color) {
         this.color = color;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public int getSpace() {
+        return space;
+    }
+
+    public void setSpace(int space) {
+        this.space = space;
+    }
+
+    public int getIncome() {
+        return income;
+    }
+
+    public void setIncome(int income) {
+        this.income = income;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
     }
 }
