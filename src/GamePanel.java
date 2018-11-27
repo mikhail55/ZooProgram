@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 
 public class GamePanel extends JPanel{
  private ZooManager gameZoo;
@@ -10,6 +11,10 @@ public class GamePanel extends JPanel{
 
  private Point selectedFirstPoint, selectedSecondPoint;
 
+ private Animal selectedAnimal;
+
+ private AnimalFactory animalCreator;
+
     /**
      * Creates a new <code>JPanel</code> with a double buffer
      * and a flow layout.
@@ -17,6 +22,7 @@ public class GamePanel extends JPanel{
     public GamePanel() {
         gameZoo = new ZooManager();
         gameShop = new Shop();
+        animalCreator = new AnimalFactory();
         Dimension preferredDimension = new Dimension(ZooCell.sideSize * gameZoo.width + 255, ZooCell.sideSize * gameZoo.height);
         setPreferredSize(preferredDimension);
         addMouseListener(new MouseTracker());
@@ -32,6 +38,8 @@ public class GamePanel extends JPanel{
             case ROOM:
                 gameShop.drawBuyRoom(g);
                 break;
+            case CARNIVORE:
+                gameShop.drawBuyCarnivore(g);
         }
     }
 
@@ -44,6 +52,7 @@ public class GamePanel extends JPanel{
          */
         @Override
         public void mouseClicked(MouseEvent e) {
+            repaint();
             if (gameShop.getSelectedScreen() == Shop.currentScreen.MENU){
                 if (e.getX() >= 509 && e.getX() < 680 && e.getY() > 350 && e.getY()<370){
                     gameShop.setSelectedScreen(Shop.currentScreen.ROOM);
@@ -87,7 +96,29 @@ public class GamePanel extends JPanel{
                     gameShop.setSelectedScreen(Shop.currentScreen.MENU);
                     repaint();
                 }
+            } else if (gameShop.getSelectedScreen() == Shop.currentScreen.CARNIVORE){
+//                selectedAnimal = new Carnivore(Carnivore.type.WOLF);
+                //repaint();
+                if (e.getX() > 515 && e.getX() < 745 && e.getY() > 130 && e.getY() < 205){
+                    selectedAnimal = animalCreator.createWolf();
+                    System.out.println("Wolf");
+                    repaint();
+                } else if (e.getX() > 515 && e.getX() < 745 && e.getY() > 220 && e.getY() < 305){
+                    selectedAnimal = animalCreator.createPanther();
+                    System.out.println("Panther");
+                    repaint();
+                } else if (e.getX() > 515 && e.getX() < 745 && e.getY() > 320 && e.getY()  < 425){
+                    selectedAnimal = animalCreator.createLion();
+                    System.out.println("Lion");
+                    repaint();
+                } else if (e.getX() > 515 && e.getX() < 745 && e.getY() > 600 && e.getY() < 650){
+                    selectedAnimal = null;
+                    gameShop.setSelectedScreen(Shop.currentScreen.MENU);
+                    repaint();
+                }
             }
+            System.out.println("x: " + e.getX());
+            System.out.println("y: " + e.getY());
         }
 
         private void resetScreen(){

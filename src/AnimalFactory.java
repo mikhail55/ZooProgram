@@ -3,27 +3,25 @@ public class AnimalFactory {
     public AnimalFactory() {
     }
 
-    private Animal createLion(String name){
-        return new Carnivore(Carnivore.type.LION, name);
+    public Animal createLion(){ return new Carnivore(Carnivore.type.LION); }
+
+    public Animal createPanther(){
+        return new Carnivore(Carnivore.type.PANTHER);
     }
 
-    private Animal createPanther(String name){
-        return new Carnivore(Carnivore.type.PANTHER, name);
+    public Animal createWolf(){
+        return new Carnivore(Carnivore.type.WOLF);
     }
 
-    private Animal createWolf(String name){
-        return new Carnivore(Carnivore.type.WOLF, name);
+    public Animal createPanda(){
+        return new Herbivore(Herbivore.type.PANDA);
     }
 
-    private Animal createPanda(String name){
-        return new Herbivore(Herbivore.type.PANDA, name);
+    public Animal createHorse(){
+        return new Herbivore(Herbivore.type.HORSE);
     }
 
-    private Animal createHorse(String name){
-        return new Herbivore(Herbivore.type.HORSE, name);
-    }
-
-    private Animal createMonkey(String name){
-        return new Herbivore(Herbivore.type.MONKEY, name);
+    public Animal createMonkey(){
+        return new Herbivore(Herbivore.type.MONKEY);
     }
 }

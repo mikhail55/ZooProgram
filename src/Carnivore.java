@@ -9,9 +9,8 @@ public class Carnivore extends Animal {
 
     private type typeOfAnimal;
 
-    public Carnivore(type typeOfAnimal, String name) {
+    public Carnivore(type typeOfAnimal) {
         this.typeOfAnimal = typeOfAnimal;
-        setName(name);
         Random rand = new Random();
         int randomNum = rand.nextInt(4)+1;
         switch (typeOfAnimal){
@@ -37,6 +36,21 @@ public class Carnivore extends Animal {
                 setSize(30);
                 break;
         }
+    }
+
+    @Override
+    public void drawInfo(Graphics g){
+        g.setColor(Color.BLACK);
+        switch(typeOfAnimal){
+            case LION: g.drawString("LION", position.x, position.y);
+            break;
+            case WOLF: g.drawString("WOLF", position.x, position.y);
+            break;
+            case PANTHER: g.drawString("PANTHER", position.x, position.y);
+            break;
+        }
+        g.drawString("Space needed: " + space, position.x + size + 3, position.y + 20 );
+        g.drawString( "Price: " + price + "$", position.x + size + 3, position.y + 40);
     }
 
     @Override

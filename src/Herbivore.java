@@ -9,7 +9,7 @@ public class Herbivore extends Animal{
 
     private type typeOfAnimal;
 
-    public Herbivore(type typeOfAnimal, String name){
+    public Herbivore(type typeOfAnimal){
         this.typeOfAnimal = typeOfAnimal;
         Random rand = new Random();
         int randomNum = rand.nextInt(4)+1;

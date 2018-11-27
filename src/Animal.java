@@ -4,15 +4,14 @@
 import java.awt.*;
 
 public abstract class Animal {
-    private String name;
-    private int health;
-    private int age;
-    private Color color;
-    private int x,y;
-    private int size;
-    private int price;
-    private int income;
-    private int space;
+    protected int health;
+    protected int age;
+    protected Color color;
+    protected Point position;
+    protected int size;
+    protected int price;
+    protected int income;
+    protected int space;
 
     public Animal() {
         health = 100;
@@ -32,15 +31,10 @@ public abstract class Animal {
 
     public void draw(Graphics g){
         g.setColor(color);
-        g.fillOval(x,y,size,size);
+        g.fillOval(position.x,position.y,size,size);
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void drawInfo(Graphics g){
     }
 
     public int getHealth() {
@@ -94,4 +88,11 @@ public abstract class Animal {
     public void setSize(int size) {
         this.size = size;
     }
+    public void setPosition(int x, int y){
+        position = new Point(x,y);
+    }
+    public Point getPosition(){
+        return position;
+    }
 }
+
