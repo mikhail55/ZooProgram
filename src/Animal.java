@@ -6,23 +6,17 @@ import java.awt.*;
 public abstract class Animal {
     protected int health;
     protected int age;
-    protected Color color;
+    private Color color;
     protected Point position;
-    protected int size;
+    private int size;
     protected int price;
-    protected int income;
-    protected int space;
+    private int income;
+    int space;
+    private int xSpeed, ySpeed;
 
     public Animal() {
         health = 100;
         age = 0;
-    }
-
-    public boolean checkHungry(){
-        return health < 50;
-    }
-
-    public void reactToFood(){
     }
 
     public void eat(){
@@ -34,65 +28,51 @@ public abstract class Animal {
         g.fillOval(position.x,position.y,size,size);
     }
 
-    public void drawInfo(Graphics g){
+    public void update(){
+        position.x += xSpeed;
+        position.y += ySpeed;
     }
 
-    public int getHealth() {
-        return health;
-    }
+    public void drawInfo(Graphics g){}
 
-    public void setHealth(int health) {
-        this.health = health;
-    }
+    public int getSize() { return size; }
 
-    public int getAge() {
-        return age;
-    }
+    public int getHealth() { return health; }
 
-    public void setAge(int age) {
-        this.age = age;
-    }
+    public void setHealth(int health) { this.health = health; }
 
-    public Color getColor() {
-        return color;
-    }
+    public int getAge() { return age; }
 
-    public void setColor(Color color) {
-        this.color = color;
-    }
+    public void setAge(int age) { this.age = age; }
 
-    public int getPrice() {
-        return price;
-    }
+    public Color getColor() { return color; }
 
-    public void setPrice(int price) {
-        this.price = price;
-    }
+    public void setColor(Color color) { this.color = color; }
 
-    public int getSpace() {
-        return space;
-    }
+    public int getPrice() { return price; }
 
-    public void setSpace(int space) {
-        this.space = space;
-    }
+    public void setPrice(int price) { this.price = price; }
 
-    public int getIncome() {
-        return income;
-    }
+    public int getSpace() { return space; }
 
-    public void setIncome(int income) {
-        this.income = income;
-    }
+    public void setSpace(int space) { this.space = space; }
 
-    public void setSize(int size) {
-        this.size = size;
-    }
-    public void setPosition(int x, int y){
-        position = new Point(x,y);
-    }
-    public Point getPosition(){
-        return position;
-    }
+    public int getIncome() { return income; }
+
+    public void setIncome(int income) { this.income = income; }
+
+    public void setSize(int size) { this.size = size; }
+
+    public void setPosition(int x, int y){ position = new Point(x,y); }
+
+    public Point getPosition(){ return position; }
+
+    public int getxSpeed() { return xSpeed; }
+
+    public void setxSpeed(int xSpeed) { this.xSpeed = xSpeed; }
+
+    public int getySpeed() { return ySpeed; }
+
+    public void setySpeed(int ySpeed) { this.ySpeed = ySpeed; }
 }
 

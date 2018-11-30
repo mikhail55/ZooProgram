@@ -41,11 +41,11 @@ public class Shop {
                     break;
                 case 1:
                     sampleHerbivores[i] = new Herbivore(Herbivore.type.HORSE);
-                    sampleHerbivores[i].setPosition(520, 350);
+                    sampleHerbivores[i].setPosition(520, 250);
                     break;
                 case 2:
                     sampleHerbivores[i] = new Herbivore(Herbivore.type.PANDA);
-                    sampleHerbivores[i].setPosition(520, 450);
+                    sampleHerbivores[i].setPosition(520, 350);
                     break;
 
             }
@@ -53,6 +53,7 @@ public class Shop {
     }
 
     public void drawMenu(Graphics g){
+        g.setColor(Color.BLACK);
         selectedScreen = currentScreen.MENU;
         g.setFont(new Font("Header", Font.BOLD, 20));
         g.drawString("Your balance is: " + balance +"$", ZooManager.width * ZooCell.sideSize + 10, ZooManager.height + 20);
@@ -62,6 +63,7 @@ public class Shop {
     }
 
     public void drawBuyRoom(Graphics g){
+        g.setColor(Color.BLACK);
         selectedScreen = currentScreen.ROOM;
         g.setFont(new Font("Header", Font.BOLD, 20));
         g.drawString("Your balance is: " + balance +"$", ZooManager.width * ZooCell.sideSize + 10, ZooManager.height + 20);
@@ -75,11 +77,25 @@ public class Shop {
         g.drawString("Cancel", ZooManager.width * ZooCell.sideSize + 10, ZooManager.height + 410);
     }
 
-    public void drawBuyCarnivore(Graphics g){
+    public void drawBuyCarnivore(Graphics g, Animal selectedAnimal){
         g.setFont(new Font("Header", Font.BOLD, 20));
+        g.drawString("Current animal:", 515, 50);
+        selectedAnimal.draw(g);
         for (Carnivore sampleCarnivore : sampleCarnivores) {
             sampleCarnivore.draw(g);
             sampleCarnivore.drawInfo(g);
+        }
+        g.drawString("Cancel", 520, 600);
+    }
+
+    public void drawBuyHerbivore(Graphics g, Animal selectedAnimal){
+        g.setFont(new Font("Header", Font.BOLD, 20));
+        g.setColor(Color.BLACK);
+        g.drawString("Current animal:", 515, 50);
+        selectedAnimal.draw(g);
+        for (Herbivore sampleHerbivore : sampleHerbivores) {
+            sampleHerbivore.draw(g);
+            sampleHerbivore.drawInfo(g);
         }
         g.drawString("Cancel", 520, 600);
     }

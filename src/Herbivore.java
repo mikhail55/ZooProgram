@@ -20,13 +20,17 @@ public class Herbivore extends Animal{
                 setSpace(9);
                 setIncome(randomNum * 25);
                 setSize(35);
+                setxSpeed(rand.nextInt(2) + 2);
+                setySpeed(rand.nextInt(2) + 2);
                 break;
             case HORSE:
-                setColor(Color.ORANGE);
+                setColor(new Color(99,69,19));
                 setPrice(500);
                 setSpace(12);
                 setIncome(randomNum * 25);
                 setSize(45);
+                setxSpeed(rand.nextInt(2) + 4);
+                setySpeed(rand.nextInt(2) + 4);
                 break;
             case MONKEY:
                 setColor(Color.PINK);
@@ -34,15 +38,23 @@ public class Herbivore extends Animal{
                 setSpace(1);
                 setIncome(randomNum * 3);
                 setSize(15);
+                setxSpeed(rand.nextInt(3) + 5);
+                setySpeed(rand.nextInt(3) + 5);
                 break;
         }
     }
-
     @Override
-    public void reactToFood(){
-
+    public void drawInfo(Graphics g){
+        g.setColor(Color.BLACK);
+        switch(typeOfAnimal){
+            case PANDA: g.drawString("PANDA", position.x, position.y);
+                break;
+            case MONKEY: g.drawString("MONKEY", position.x, position.y);
+                break;
+            case HORSE: g.drawString("HORSE", position.x, position.y);
+                break;
+        }
+        g.drawString("Space needed: " + space, position.x + size + 3, position.y + 20 );
+        g.drawString( "Price: " + price + "$", position.x + size + 3, position.y + 40);
     }
-
-
-
 }

@@ -27,15 +27,6 @@ public class ZooManager {
 
     public void addRoom(ZooRoom addedRoom){
 
-        if (addedRoom.getWidth() < 0){
-            addedRoom.setWidth(-addedRoom.getWidth());
-            addedRoom.setIndex(addedRoom.getIndex().x - addedRoom.getWidth(), addedRoom.getIndex().y);
-        }
-        if (addedRoom.getHeight() < 0){
-            addedRoom.setHeight(-addedRoom.getHeight());
-            addedRoom.setIndex(addedRoom.getIndex().x, addedRoom.getIndex().y-addedRoom.getHeight());
-        }
-
         createdRooms.add(addedRoom);       //adding a room
 
         for (int i = 0; i < addedRoom.getWidth(); i++){
@@ -63,13 +54,27 @@ public class ZooManager {
     }
 
     public void draw(Graphics g){
-        for (ZooCell[] aZooSize : zooSize) {
-            for (int j = 0; j < aZooSize.length; j++) {
-                aZooSize[j].draw(g);
+        for (ZooCell[] ZooSize : zooSize) {
+            for (ZooCell aZooSize : ZooSize) {
+                aZooSize.draw(g);
             }
         }
         for (ZooRoom createdRoom : createdRooms) {
             createdRoom.draw(g);
         }
         }
+
+    public ArrayList<ZooRoom> getCreatedRooms() {
+        return createdRooms;
+    }
+    public void addAnimal(Animal addedAnimal, int roomId){
+        createdRooms.get(roomId).addAnimal(addedAnimal);
+    }
+    public boolean checkPlacementAvailability(Animal checkAnimal, int roomId){
+        if (createdRooms.get(roomId).getAvailableSpace() < checkAnimal.getSpace()){
+            return false;
+        }
+        createdRooms.get(roomId).setAvailableSpace(createdRooms.get(roomId).getAvailableSpace() - checkAnimal.getSpace());
+        return true;
+    }
 }

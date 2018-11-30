@@ -20,6 +20,8 @@ public class Carnivore extends Animal {
                 setSpace(25);
                 setIncome(randomNum * 50);
                 setSize(50);
+                setxSpeed(rand.nextInt(2) + 3);
+                setySpeed(rand.nextInt(2) + 3);
                 break;
             case PANTHER:
                 setColor(Color.BLACK);
@@ -27,6 +29,8 @@ public class Carnivore extends Animal {
                 setSpace(9);
                 setIncome(randomNum * 15);
                 setSize(35);
+                setxSpeed(rand.nextInt(4) + 4);
+                setySpeed(rand.nextInt(4) + 4);
                 break;
             case WOLF:
                 setColor(Color.GRAY);
@@ -34,6 +38,8 @@ public class Carnivore extends Animal {
                 setSpace(6);
                 setIncome(randomNum * 10);
                 setSize(30);
+                setxSpeed(rand.nextInt(2) + 4);
+                setySpeed(rand.nextInt(2) + 4);
                 break;
         }
     }
@@ -52,14 +58,4 @@ public class Carnivore extends Animal {
         g.drawString("Space needed: " + space, position.x + size + 3, position.y + 20 );
         g.drawString( "Price: " + price + "$", position.x + size + 3, position.y + 40);
     }
-
-    @Override
-    public void reactToFood(){
-
-    }
-
-    private void reactToPrey(Animal prey){
-
-    }
-
 }
